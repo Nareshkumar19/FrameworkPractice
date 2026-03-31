@@ -10,7 +10,7 @@ public class LoginPage {
 	private final By email = By.xpath("//input[@name=\"email\"]");
 	private final By password = By.xpath("//input[@name=\"password\"]");
 	private final By loginBtn = By.xpath("//input[@value=\"Login\"]");
-	private final By forgotPwdLnk = By.linkText("Forgotten Password1");
+	private final By forgotPwdLnk = By.linkText("Forgotten Password");
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
