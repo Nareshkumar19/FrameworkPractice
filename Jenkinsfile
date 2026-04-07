@@ -17,7 +17,10 @@ pipeline{
 		
 		stage("QA Regression"){
 			steps{
-				echo("QA Regression complete")
+				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+					git 'https://github.com/Nareshkumar19/FrameworkPractice.git'
+					bat "mvn clean test -Dsurefire.suiteXmlFiles=/src/test/resources/testRunners/testng.xml -Denv=uat"
+				}
 			}
 		}
 	}

@@ -61,7 +61,8 @@
             	<forkCount>3</forkCount>
             	<reuseForks>true</reuseForks>
             	<suiteXmlFiles>
-            		<suiteXmlFile>C:/Users/Naresh/eclipse-workspace/PomPractice/src/test/resources/testRunners/testng.xml</suiteXmlFile>
+            		<!--  <suiteXmlFile>C:/Users/Naresh/eclipse-workspace/PomPractice/src/test/resources/testRunners/testng.xml</suiteXmlFile>-->
+            		<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
             	</suiteXmlFiles>
             </configuration>
         </plugin>
