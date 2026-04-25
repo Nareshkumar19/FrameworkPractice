@@ -2,6 +2,7 @@ screenshots/
 screenshot/
 test-output/
 build/
+allure-results/
 
 application.log
 .mtj.tmp
