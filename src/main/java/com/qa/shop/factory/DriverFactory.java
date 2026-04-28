@@ -28,6 +28,7 @@ public class DriverFactory {
 	OptionsFactory options;
 	public static ThreadLocal<WebDriver> tLocalDriver = new ThreadLocal<WebDriver>();
 	public static Logger log = LogManager.getLogger(DriverFactory.class);
+	//4 states of Log : info, warning, error, fatal
 	
 	@Step("Properties : {0}")
 	public WebDriver initDriver(Properties prop) {
