@@ -1,5 +1,7 @@
 package com.qa.shop.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +14,7 @@ public class SearchResultsPage {
 	
 	private static final By searchResults = By.xpath("//div[@class='product-thumb']");
 	private static final By firstResult = By.xpath("(//div[@class='product-thumb'])[1]");
+	public static Logger log = LogManager.getLogger(SearchResultsPage.class);
 	
 	public SearchResultsPage(WebDriver driver) {
 		this.driver = driver;
@@ -20,7 +23,8 @@ public class SearchResultsPage {
 	@Step("Retrieve the Search results count")
 	public int getSearchResultsCount() {
 		int resultsCount = driver.findElements(searchResults).size();
-		System.out.println("Results count : " + resultsCount);
+		log.info("Results count : " + resultsCount);
+//		System.out.println("Results count : " + resultsCount);
 		return resultsCount;
 	}
 	

@@ -3,6 +3,8 @@ package com.qa.shop.pages;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,7 @@ public class MyAccountPage {
 	
 	private final By headers = By.xpath("//h2");
 	private final By searchField = By.xpath("//input[@name='search']");
+	public static Logger log = LogManager.getLogger(MyAccountPage.class);
 	
 	public MyAccountPage(WebDriver driver) {
 		this.driver = driver;
@@ -24,7 +27,8 @@ public class MyAccountPage {
 	@Step("Retrieve Account Page Title")
 	public String getAccntPageTitle() {
 		String actualTitle = driver.getTitle();
-		System.out.println("Page Title : " + actualTitle);
+		log.info("Page Title : " + actualTitle);
+//		System.out.println("Page Title : " + actualTitle);
 		return actualTitle;
 	}
 	

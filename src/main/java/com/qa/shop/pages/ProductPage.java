@@ -3,6 +3,8 @@ package com.qa.shop.pages;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +17,7 @@ public class ProductPage {
 	private HashMap<String,String> prodDetailsMap = new HashMap<String,String>();
 	
 	private static final By productDetailsElements = By.xpath("//h1//following-sibling::ul[@class='list-unstyled'][1]//li");
-	
+	public static Logger log = LogManager.getLogger(ProductPage.class);
 	
 	public ProductPage(WebDriver driver) {
 		this.driver = driver;
@@ -28,6 +30,7 @@ public class ProductPage {
 			String [] detailSplit = detail.getText().split(":");
 			prodDetailsMap.put(detailSplit[0].trim(), detailSplit[1].trim());
 		}
+		log.info("Actual Product details : " + prodDetailsMap);
 		System.out.println(prodDetailsMap);
 		return prodDetailsMap;
 	}

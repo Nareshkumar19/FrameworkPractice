@@ -6,6 +6,7 @@
 	<listeners>
 		<listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
 		<listener class-name="com.qa.shop.listener.AllureListener"/>
+		<listener class-name="com.qa.shop.listener.AnnotationListener"/>
 	</listeners>
 
 	<test name="Login Tests">

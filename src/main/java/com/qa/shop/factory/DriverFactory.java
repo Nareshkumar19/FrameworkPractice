@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +27,7 @@ public class DriverFactory {
 	Properties prop;
 	OptionsFactory options;
 	public static ThreadLocal<WebDriver> tLocalDriver = new ThreadLocal<WebDriver>();
+	public static Logger log = LogManager.getLogger(DriverFactory.class);
 	
 	@Step("Properties : {0}")
 	public WebDriver initDriver(Properties prop) {
@@ -50,7 +53,8 @@ public class DriverFactory {
 		//Cannot execute Safari in headless or incognito
 		
 		default:
-			System.out.println("-------- Incorrect Browser : " + browserName + " --------");
+			log.error("-------- Incorrect Browser : " + browserName + " --------");
+//			System.out.println("-------- Incorrect Browser : " + browserName + " --------");
 			throw new BrowserException("Incorrect Browser : " + browserName);	
 		}
 //		driver.get(prop.getProperty("applicationUrl"));
@@ -80,6 +84,7 @@ public class DriverFactory {
 				break;
 				
 				default:
+					log.error("=======Invalid Environment : " + environment + "=======");
 					throw new EnvironmentException("=======Invalid Environment : " + environment + "=======");
 			}
 			prop.load(file);
@@ -88,6 +93,8 @@ public class DriverFactory {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		log.info("Properties : " + prop);
 		return prop;
 	}
 	
